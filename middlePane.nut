@@ -220,7 +220,7 @@ class MiddlePane
 		}
 		else 
 		{
-			GoTo(itemIndex, true, false)
+			GoTo(_var, itemIndex, true, false)
 		}
 	}	
 	
@@ -301,7 +301,7 @@ class MiddlePane
 	}
 	
 	
-	function GoTo(_index, _auto, _reload = true)
+	function GoTo(_var, _index, _auto, _reload = true)
 	{
 		local count = items.len()
 		
@@ -329,7 +329,7 @@ class MiddlePane
 					break
 					
 				case "box":			
-					args.headerMessage.SetMessage(box.GetHeaderMessage(fe.game_info(Info.Extra)))
+					args.headerMessage.SetMessage(box.GetHeaderMessage(fe.game_info(Info.Extra, _var)))
 					break
 					
 				case "wheel":			
@@ -377,7 +377,7 @@ class MiddlePane
 			{
 				if (_ttime > previousTick + args.inputDelay)
 				{
-					GoTo(itemIndex - 1, false)
+					GoTo(0, itemIndex - 1, false)
 					
 					autoSwap = false
 					previousTick = _ttime
@@ -387,7 +387,7 @@ class MiddlePane
 			{	
 				if (_ttime > previousTick + args.inputDelay)
 				{
-					GoTo(itemIndex + 1, false)
+					GoTo(0, itemIndex + 1, false)
 					
 					autoSwap = false
 					previousTick = _ttime
@@ -399,7 +399,7 @@ class MiddlePane
 					foreach (index, item in items)
 						if (item.type == "video")
 						{
-							GoTo(index, true)
+							GoTo(0, index, true)
 							break
 						}
 				}
